@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import Link from 'next/link'
+import {
+  URL_DATE_PATTERN,
+  DISPLAY_DATE_PATTERN,
+  SHORT_DAY_DATE_PATTERN
+} from '../../config/constants'
 
 export default class DatePicker extends Component {
   getLast5Days() {
@@ -58,11 +63,13 @@ export default class DatePicker extends Component {
           {this.getLast5Days().map(day =>
             <li key={day} className={this.isActiveDay(day) ? 'active' : ''}>
               <Link
-                href={`/?date=${moment(day).format('D-M-YY')}`}
-                as={`/${moment(day).format('D-M-YY')}`}
+                href={`/?date=${moment(day).format(URL_DATE_PATTERN)}`}
+                as={`/${moment(day).format(URL_DATE_PATTERN)}`}
               >
                 <a>
-                  {this.isToday(day) ? 'Today' : moment(day).format('ddd')}
+                  {this.isToday(day)
+                    ? 'Today'
+                    : moment(day).format(SHORT_DAY_DATE_PATTERN)}
                 </a>
               </Link>
             </li>
