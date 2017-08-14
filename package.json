@@ -1,0 +1,27 @@
+{
+  "name": "timelapse.io",
+  "version": "1.0.0",
+  "description": "A Journal Thingybob",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kulor/timelapse.git"
+  },
+  "keywords": ["journal"],
+  "author": "James Broad <jb@kulor.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kulor/timelapse/issues"
+  },
+  "homepage": "https://github.com/kulor/timelapse#readme",
+  "dependencies": {
+    "next": "^3.0.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
