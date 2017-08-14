@@ -35,27 +35,36 @@ export default class DatePicker extends Component {
       <div>
         <style jsx>
           {`
-            ol {
+            .date-range {
               list-style: none;
               margin: 0;
               padding: 0;
-            }
-            .date-range {
               display: flex;
+              height: 60px;
               justify-content: center;
+              align-items: center;
             }
+
             .date-range li {
               list-style: none;
-              margin: 0 2px;
+              margin: 0 5px;
               padding: 0;
+              line-height: 1;
             }
+
             .date-range li a {
-              color: #333;
+              color: #aaa;
               text-decoration: none;
+              transition: 180ms ease-in-out color;
+            }
+
+            .date-range li a:hover {
+              color: #555;
             }
 
             .date-range .active a {
-              text-decoration: underline;
+              color: #111;
+              font-weight: bold;
             }
           `}
         </style>
