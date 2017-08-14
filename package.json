@@ -4,15 +4,18 @@
   "description": "A Journal Thingybob",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_ENV=development PORT=3000 node index.js",
     "build": "next build",
-    "start": "next start"
+    "prestart": "next build",
+    "start": "NODE_ENV=production node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kulor/timelapse.git"
   },
-  "keywords": ["journal"],
+  "keywords": [
+    "journal"
+  ],
   "author": "James Broad <jb@kulor.com>",
   "license": "MIT",
   "bugs": {
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/kulor/timelapse#readme",
   "dependencies": {
+    "express": "^4.15.4",
     "next": "^3.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
