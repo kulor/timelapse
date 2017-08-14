@@ -67,6 +67,7 @@ export default class extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
           />
+          <title>Timelapse — The Story Of Your Life</title>
           <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
         </Head>
 
