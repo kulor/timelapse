@@ -3,4 +3,4 @@ Timelapse
 
 A dead simple way to capture your life, daily
 
-![timelapse_ _the_story_of_your_life](https://user-images.githubusercontent.com/38616/29295878-cfe5c0a8-814e-11e7-82b5-322ac847b742.png)
+![15_08_2017__00_17](https://user-images.githubusercontent.com/38616/29295931-1fa13e60-814f-11e7-963f-1d7b5b6a6d34.png)
