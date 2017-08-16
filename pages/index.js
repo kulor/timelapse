@@ -4,6 +4,7 @@ import moment from 'moment'
 import Head from 'next/head'
 import DatePicker from '../components/date-picker/date-picker'
 import { URL_DATE_PATTERN, DISPLAY_DATE_PATTERN } from '../config/constants'
+import { getEntryForDate, setEntryForDate } from '../persistence/entries'
 
 export default class extends Component {
   static propTypes() {}
@@ -21,33 +22,47 @@ export default class extends Component {
     if (nextProps.url.query.date === this.props.url.query.date) {
       return
     }
-    const dateKey =
-      this.props.url.query.date || moment().format(URL_DATE_PATTERN)
-    const entry = localStorage.getItem(dateKey) || ''
-    this.setState({
-      entry,
-      dateKey,
-      date: moment(dateKey, URL_DATE_PATTERN)
-    })
+
+    return this.setupEntry(this.props.url.query.date)
   }
 
   componentDidMount() {
     const dateKey =
       this.props.url.query.date || moment().format(URL_DATE_PATTERN)
-    const entry = localStorage.getItem(dateKey) || ''
+
+    this.setupEntry(dateKey)
+  }
+
+  setupEntry(dateKey) {
     this.setState({
-      entry,
       dateKey,
       date: moment(dateKey, URL_DATE_PATTERN)
     })
+
+    getEntryForDate(dateKey)
+      .then(doc => {
+        this.setState({
+          entry: doc.entryCopy
+        })
+      })
+      .catch(err => {
+        // No entry found
+        this.setState({
+          entry: ''
+        })
+      })
   }
 
   onChangeEntry = e => {
     const entry = e.target.value
+    // Optimistically set UI
     this.setState({
       entry
     })
-    localStorage.setItem(this.state.dateKey, e.target.value)
+
+    setEntryForDate(this.state.dateKey, entry).catch(err => {
+      console.log('Error saving entry', err)
+    })
   }
 
   getPlaceholderText() {
